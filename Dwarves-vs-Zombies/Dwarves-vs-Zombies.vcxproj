@@ -68,13 +68,22 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>E:\My Pictures D %283%29\programming\SDL2_ttf-devel-2.0.12-VC\SDL2_ttf-2.0.12\include;E:\My Pictures D %283%29\programming\SDL2_mixer-devel-2.0.0-VC\SDL2_mixer-2.0.0\include;E:\My Pictures D %283%29\programming\SDL2_net-devel-2.0.0-VC\SDL2_net-2.0.0\include;E:\My Pictures D %283%29\programming\SDL2_image-devel-2.0.0-VC\SDL2_image-2.0.0\include;E:\My Pictures D %283%29\programming\SDL2-devel-2.0.5-VC-2015\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\My Pictures D %283%29\programming\SDL2_image-devel-2.0.0-VC\SDL2_image-2.0.0\lib\x86;E:\My Pictures D %283%29\programming\SDL2_mixer-devel-2.0.0-VC\SDL2_mixer-2.0.0\lib\x86;E:\My Pictures D %283%29\programming\SDL2_net-devel-2.0.0-VC\SDL2_net-2.0.0\lib\x86;E:\My Pictures D %283%29\programming\SDL2_ttf-devel-2.0.12-VC\SDL2_ttf-2.0.12\lib\x86;E:\My Pictures D %283%29\programming\SDL2-devel-2.0.5-VC-2015\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\Boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>E:\Boost\stage\lib;E:\Boost\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;SDL2_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -110,6 +119,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="counter.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="entityController.cpp" />
+    <ClCompile Include="eventController.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="imageService.cpp" />
+    <ClCompile Include="initializer.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="netController.cpp" />
+    <ClCompile Include="render.cpp" />
+    <ClCompile Include="resources.cpp" />
+    <ClCompile Include="tester.cpp" />
+    <ClCompile Include="UIController.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="counter.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="entityController.h" />
+    <ClInclude Include="eventController.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="imageService.h" />
+    <ClInclude Include="initializer.h" />
+    <ClInclude Include="netController.h" />
+    <ClInclude Include="render.h" />
+    <ClInclude Include="resources.h" />
+    <ClInclude Include="tester.h" />
+    <ClInclude Include="UIController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
