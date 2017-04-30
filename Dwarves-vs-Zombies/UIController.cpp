@@ -1,6 +1,7 @@
 #include "UIController.h"
 
 std::vector<menuHandler> UIController::menus;
+int UIController::focus; //which menu has focus. 0 for the game screen
 
 UIController::UIController()
 {
@@ -8,44 +9,29 @@ UIController::UIController()
 
 void UIController::update()
 {
-	for (size_t x = 0; x < menus.size(); x++)
-	{
-		menus[x].update();
-	}
+	menus[focus].update();
 }
 
 void UIController::eventUpdate()
 {
-	for (size_t x = 0; x < menus.size(); x++)
-	{
-		menus[x].eventUpdate();
-	}
+	menus[focus].eventUpdate();
 
 	if (eventController::currentEvent.type == eventController::UIEvent)
 	{
-		hideAll();
-
-		switch (eventController::currentEvent.user.code)
+		if (eventController::currentEvent.user.code == eventController::showMenu)
 		{
-		case eventController::showQuickplayMenu:
-			menus[quickPlayMenu].visible = true;
-			break;
-		case eventController::showServerMenu:
-			menus[serversMenu].visible = true;
-			break;
-		case eventController::showOptionsMenu:
-			menus[optionsMenu].visible = true;
-			break;
+			if (menus.size() < *(size_t*)eventController::currentEvent.user.data1)
+			{
+				focus = *(int*)eventController::currentEvent.user.data1;
+			}
 		}
+		
 	}
 }
 
 void UIController::draw()
 {
-	for (size_t x = 0; x < menus.size(); x++)
-	{
-		menus[x].draw();
-	}
+	menus[focus].draw();
 }
 
 void UIController::registerMenu(menuHandler menu)
@@ -53,12 +39,18 @@ void UIController::registerMenu(menuHandler menu)
 	menus.push_back(menu);
 }
 
-void UIController::hideAll()
+int UIController::getFocus()
 {
-	for (size_t x = 0; x < menus.size(); x++)
-	{
-		menus[x].visible = false;
-	}
+	return focus;
+}
+
+bool UIController::showMenu(int menu)
+{
+	if(menu > maxMenus)
+		return false;
+	menus[menu].loseFocus();
+	focus = menu;
+	return true;
 }
 
 UIController::~UIController()

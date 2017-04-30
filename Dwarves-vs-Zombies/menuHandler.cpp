@@ -23,6 +23,10 @@ void menuHandler::draw()
 {
 }
 
+void menuHandler::loseFocus()
+{
+}
+
 
 menuHandler::~menuHandler()
 {

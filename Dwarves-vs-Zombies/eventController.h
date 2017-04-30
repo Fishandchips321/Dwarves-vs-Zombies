@@ -27,11 +27,7 @@ public:
 
 	enum UIEvents
 	{
-		showQuickplayMenu,
-		showServerMenu,
-		showOptionsMenu,
-		showLobby,
-		showGameUI,
+		showMenu,
 		lobbyPlayerUpdate
 	};
 

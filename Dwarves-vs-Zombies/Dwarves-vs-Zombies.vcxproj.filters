@@ -76,6 +76,12 @@
     <Filter Include="Source Files\Items">
       <UniqueIdentifier>{f5f580eb-d5a9-4c9f-a11d-8951dad0ba95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\actions">
+      <UniqueIdentifier>{77ac82f4-0004-4102-94dc-9cc42297d15f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\actions">
+      <UniqueIdentifier>{624bcfdf-8a6a-4b54-94f1-341daef5ecd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -121,9 +127,6 @@
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="slider.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="menuHandler.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="splashMainMenu.cpp">
@@ -177,6 +180,18 @@
     <ClCompile Include="loginNetController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
+    <ClCompile Include="actionController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="menuHandler.cpp">
+      <Filter>Source Files\UI\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="action.cpp">
+      <Filter>Source Files\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="escMenu.cpp">
+      <Filter>Source Files\actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entityController.h">
@@ -213,9 +228,6 @@
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="slider.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="menuHandler.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="button.h">
@@ -277,6 +289,18 @@
     </ClInclude>
     <ClInclude Include="loginNetController.h">
       <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="actionController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="menuHandler.h">
+      <Filter>Header Files\UI\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="action.h">
+      <Filter>Header Files\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="escMenu.h">
+      <Filter>Header Files\actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

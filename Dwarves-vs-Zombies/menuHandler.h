@@ -8,10 +8,11 @@ class menuHandler
 {
 public:
 	menuHandler();
-	void init(int ID);
-	void update();
-	void eventUpdate();
-	void draw();
+	virtual void init(int ID);
+	virtual void update();
+	virtual void eventUpdate();
+	virtual void draw();
+	virtual void loseFocus();
 	~menuHandler();
 
 	bool visible;

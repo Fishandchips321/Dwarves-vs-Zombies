@@ -2,6 +2,9 @@
 #include <SDL.h>
 #include "menuHandler.h"
 #include <vector>
+
+#define maxMenus 5
+
 class UIController
 {
 public:
@@ -10,18 +13,28 @@ public:
 	static void eventUpdate();
 	static void draw();
 	static void registerMenu(menuHandler menu);
+	static int getFocus();
+	static bool showMenu(int menu);
 	~UIController();
-private:
-	static void hideAll();
-
-	static std::vector<menuHandler> menus;
 
 	enum menuIDs
 	{
+		gameScreen,
 		splashMenu,
 		quickPlayMenu,
 		serversMenu,
-		optionsMenu
+		optionsMenu,
+		escMenu,
+		deathMenu,
+		lobby
 	};
+
+private:
+
+	static std::vector<menuHandler> menus;
+
+	
+
+	static int focus;
 };
 
