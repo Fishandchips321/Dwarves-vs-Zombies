@@ -1,5 +1,5 @@
 #include "game.h"
-#include <iostream>
+
 
 game::game()
 {
@@ -13,6 +13,10 @@ bool game::init()
 		return false;
 	}
 	myGameState = gameStates::splash;
+	FPSman = new FPSmanager;
+	SDL_initFramerate(FPSman);
+	SDL_setFramerate(FPSman, 60);
+
 	test.init();
 	return true;
 }
@@ -22,54 +26,58 @@ bool game::startGameLoop()
 	bool quit = false;
 	std::cout << "[INFO]: Entering the game loop" << std::endl;
 
-	counter capTimer;
-
-	counter fpsTimer;
-	fpsTimer.start();
-	int countedFrames = 0;
-
 	while (!quit && myGameState != gameStates::end)
 	{
-		capTimer.start();
-		SDL_Event e;
-		while (SDL_PollEvent(&e) != 0)
+		while (eventController::nextEvent()) //poll events
 		{
-			if (e.type == SDL_QUIT)
+			if (eventController::currentEvent.type == SDL_QUIT) //if the window X button was pressed
 			{
 				quit = true;
 			}
 
-			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
+			if (eventController::currentEvent.type == SDL_KEYDOWN && eventController::currentEvent.key.keysym.sym == SDLK_ESCAPE)
 			{
 				myGameState = gameStates::end;
 			}
 
-			resources::currentEvent = &e;
 			eventUpdate();
 		}
 
-		//Calculate and correct fps
-		float avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
-		if (avgFPS > 2000000)
+		if (netController::connected)
 		{
-			avgFPS = 0;
-		}
+			while (netController::nextMessage())
+			{
+				netUpdate();
+			}
 
-		//output the agerage fps to the console
-		//cout << (int)avgFPS << endl;
+			while (netController::nextControlMessage())
+			{
+				netController::update();
+
+				if (netController::currentControlMessage.NCM == netController::USER_ID)
+				{
+					netController::netID = std::stoi(netController::currentControlMessage.paramaters);
+				}
+
+				if (netController::currentControlMessage.NCM == netController::LOAD_MAP && myGameState == gameStates::lobby)
+				{
+					myGameState = gameStates::load;
+				}
+
+				if (netController::currentControlMessage.NCM == netController::KEEPALIVE_PING)
+				{
+					netController::send(std::to_string(netController::KEEPALIVE_PONG));
+				}
+
+				controlNetUpdate();
+			}
+		}
 
 		//update then draw the game
 		update();
 		draw();
 
-		//"frame capping"
-		int frameTicks = capTimer.getTicks();
-		if (frameTicks < screenTicksPerFrame)
-		{
-			SDL_Delay(screenTicksPerFrame - frameTicks);
-		}
-
-		++countedFrames;
+		SDL_framerateDelay(FPSman);
 	}
 
 	return true;
@@ -80,6 +88,10 @@ void game::eventUpdate()
 	switch (myGameState)
 	{
 	case gameStates::play:
+		entityController::eventUpdate();
+		AIController::eventUpdate();
+		break;
+	case gameStates::lobby:
 		break;
 	case gameStates::splash:
 		break;
@@ -87,9 +99,49 @@ void game::eventUpdate()
 		break;
 	case gameStates::over:
 		break;
-	case gameStates::paused:
+	}
+	UIController::eventUpdate();
+	keybindController::eventUpdate();
+}
+
+void game::netUpdate()
+{
+	switch (myGameState)
+	{
+	case gameStates::play:
+		AIController::netUpdate();
+		break;
+	case gameStates::lobby:
+		break;
+	case gameStates::splash:
+		break;
+	case gameStates::end:
+		break;
+	case gameStates::over:
+		break;
+	case gameStates::load:
 		break;
 	}
+}
+
+void game::controlNetUpdate()
+{
+	switch (myGameState)
+	{
+	case gameStates::play:
+		break;
+	case gameStates::lobby:
+		break;
+	case gameStates::splash:
+		break;
+	case gameStates::end:
+		break;
+	case gameStates::over:
+		break;
+	case gameStates::load:
+		break;
+	}
+	world.controlNetUpdate();
 }
 
 void game::update()
@@ -97,6 +149,11 @@ void game::update()
 	switch (myGameState)
 	{
 	case gameStates::play:
+		entityController::update();
+		AIController::update();
+		world.update();
+		break;
+	case gameStates::lobby:
 		break;
 	case gameStates::splash:
 		break;
@@ -104,9 +161,8 @@ void game::update()
 		break;
 	case gameStates::over:
 		break;
-	case gameStates::paused:
-		break;
 	}
+	UIController::update();
 	render::update();
 }
 
@@ -115,7 +171,10 @@ void game::draw()
 	switch (myGameState)
 	{
 	case gameStates::play:
-
+		entityController::draw();
+		world.draw();
+		break;
+	case gameStates::lobby:
 		break;
 	case gameStates::splash:
 		break;
@@ -123,12 +182,10 @@ void game::draw()
 		break;
 	case gameStates::over:
 		break;
-	case gameStates::paused:
-		break;
 	}
 
 	test.draw();
-
+	UIController::draw();
 	render::drawScreen(); //no touchey
 }
 

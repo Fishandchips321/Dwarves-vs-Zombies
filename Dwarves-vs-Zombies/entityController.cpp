@@ -12,16 +12,6 @@ void entityController::update()
 	{
 		entities[i]->update();
 	}
-	collisionDetection();
-}
-
-void entityController::collisionDetection()
-{
-	/*
-		todo:
-		iterate through entities
-		check collision between all
-	*/
 }
 
 void entityController::eventUpdate()
@@ -58,26 +48,6 @@ bool entityController::registerEntity(entity* newEnt)
 	}
 
 	return false;
-}
-
-void entityController::detectCollision(entity* entity1, entity* entity2)
-{
-
-	if (entity1->entityRect.x >= entity2->entityRect.x && entity1->entityRect.x <= entity2->entityRect.x + entity2->entityRect.w)
-	{
-		if (entity1->entityRect.y >= entity2->entityRect.y && entity1->entityRect.y <= entity2->entityRect.y + entity2->entityRect.h)
-		{
-			entity1->onCollide(entity2);
-		}
-	}
-
-	if (entity2->entityRect.x >= entity1->entityRect.x && entity2->entityRect.x <= entity1->entityRect.x + entity1->entityRect.w)
-	{
-		if (entity2->entityRect.y >= entity1->entityRect.y && entity2->entityRect.y <= entity1->entityRect.y + entity1->entityRect.h)
-		{
-			entity2->onCollide(entity1);
-		}
-	}
 }
 
 entityController::~entityController()

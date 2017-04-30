@@ -1,13 +1,27 @@
 #pragma once
 #include <SDL.h>
-#include "render.h"
+#include "menuHandler.h"
+#include <vector>
 class UIController
 {
 public:
 	UIController();
-	void update();
-	void eventUpdate();
-	void draw();
+	static void update();
+	static void eventUpdate();
+	static void draw();
+	static void registerMenu(menuHandler menu);
 	~UIController();
+private:
+	static void hideAll();
+
+	static std::vector<menuHandler> menus;
+
+	enum menuIDs
+	{
+		splashMenu,
+		quickPlayMenu,
+		serversMenu,
+		optionsMenu
+	};
 };
 

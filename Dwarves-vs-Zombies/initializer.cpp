@@ -38,6 +38,16 @@ bool initializer::initAll()
 		cout << "[ERROR]: Event Controller wasn't initialized correctly" << endl;
 		success = false;
 	}
+	//initailise all UI stuff
+	if (initUI())
+	{
+		cout << "[INFO]: UI was initialised successfully" << endl;
+	}
+	else
+	{
+		cout << "[ERROR]: UI wasn't initialised correctly" << endl;
+		success = false;
+	}
 	return success;
 }
 
@@ -78,6 +88,15 @@ bool initializer::initSDL()
 bool initializer::initEventCont()
 {
 	return eventController::init();
+}
+
+bool initializer::initUI()
+{
+	splashMainMenu splash;
+	splash.visible = false;
+	UIController::registerMenu(splash);
+
+	return true;
 }
 
 bool initializer::initRender()

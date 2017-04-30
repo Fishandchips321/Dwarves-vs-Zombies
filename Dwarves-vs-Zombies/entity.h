@@ -1,9 +1,10 @@
 #pragma once
-#include "resources.h"
 #include "render.h"
 #include "imageService.h"
+
 class entity
 {
+	friend class AIPackage;
 public:
 	entity();
 	virtual void update();

@@ -6,10 +6,11 @@
 #include <SDL_ttf.h>
 #include <SDL_net.h>
 #include <SDL_mixer.h>
-#include "resources.h"
 #include "counter.h"
 #include "render.h"
 #include "eventController.h"
+#include "UIController.h"
+#include "menus.h"
 
 
 
@@ -23,6 +24,7 @@ public:
 	bool initRender();
 	bool initSDL();
 	bool initEventCont();
+	bool initUI();
 	~initializer();
 private:
 };

@@ -1,7 +1,7 @@
 #include "imageService.h"
 #include <iostream>
 
-const std::string imageService::fonts[] = { "assets/Fonts/kenvector_future.ttf", "assets/Fonts/kenvector_future_thin.ttf" };
+const std::string imageService::fonts[] = { "assets/fonts/kenvector_future.ttf", "assets/fonts/kenvector_future_thin.ttf" };
 
 imageService::imageService()
 {

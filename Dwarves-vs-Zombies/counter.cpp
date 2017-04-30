@@ -67,6 +67,12 @@ void counter::unpause()
 	}
 }
 
+void counter::restart()
+{
+	stop();
+	start();
+}
+
 Uint32 counter::getTicks()
 {
 	//The actual timer time

@@ -37,6 +37,45 @@
     <Filter Include="Header Files\UI">
       <UniqueIdentifier>{d2bfce3b-fb66-4f63-95e5-f1df93e866e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI\Menus">
+      <UniqueIdentifier>{4b059d86-3233-4b72-b316-1a7b90d6cf11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\Menus">
+      <UniqueIdentifier>{1b53a655-6677-4886-9d23-c3c98a8b0339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world">
+      <UniqueIdentifier>{4ad1a84e-af26-4c43-aba2-616d74042639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\blocks">
+      <UniqueIdentifier>{bacbff60-5680-4213-b994-5ad6aa5dd211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\tiles">
+      <UniqueIdentifier>{e4632885-2c13-4bc0-93d1-8edbf512bca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world">
+      <UniqueIdentifier>{3e1ac95d-3faa-4e42-ad3f-803fdbc99656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\tile">
+      <UniqueIdentifier>{2a75f110-adac-45c0-b289-dab27f3d3abb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\block">
+      <UniqueIdentifier>{7ebd283b-7764-4801-a361-043dc37f7035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XML Files">
+      <UniqueIdentifier>{8d51b322-069b-4346-9e0b-f09b8498ba8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\AI">
+      <UniqueIdentifier>{7ee85cbb-fb2b-41a6-97c0-94dd2f179c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\AI">
+      <UniqueIdentifier>{7ba62906-1ede-4f35-9369-64e63cd039b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{f4e97bb7-af53-410e-a663-4b7cf02126e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{f5f580eb-d5a9-4c9f-a11d-8951dad0ba95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -52,9 +91,6 @@
       <Filter>Source Files\resources</Filter>
     </ClCompile>
     <ClCompile Include="render.cpp">
-      <Filter>Source Files\resources</Filter>
-    </ClCompile>
-    <ClCompile Include="resources.cpp">
       <Filter>Source Files\resources</Filter>
     </ClCompile>
     <ClCompile Include="entity.cpp">
@@ -78,6 +114,69 @@
     <ClCompile Include="UIController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="collisionController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="slider.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="menuHandler.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="splashMainMenu.cpp">
+      <Filter>Source Files\UI\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="consoleController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="windowController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="windowRenderer.cpp">
+      <Filter>Source Files\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="worldController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="UIWindow.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="tile.cpp">
+      <Filter>Source Files\world\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>Source Files\world\blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="blockController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="tileController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="AIPackage.cpp">
+      <Filter>Source Files\Entities\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="keybindController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="keyBindAction.cpp">
+      <Filter>Source Files\resources</Filter>
+    </ClCompile>
+    <ClCompile Include="AIController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="loginController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="loginNetController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entityController.h">
@@ -92,9 +191,6 @@
     <ClInclude Include="render.h">
       <Filter>Header Files\resources</Filter>
     </ClInclude>
-    <ClInclude Include="resources.h">
-      <Filter>Header Files\resources</Filter>
-    </ClInclude>
     <ClInclude Include="entity.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -103,9 +199,6 @@
     </ClInclude>
     <ClInclude Include="imageService.h">
       <Filter>Header Files\resources</Filter>
-    </ClInclude>
-    <ClInclude Include="tester.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="eventController.h">
       <Filter>Header Files\Controllers</Filter>
@@ -116,5 +209,77 @@
     <ClInclude Include="UIController.h">
       <Filter>Header Files\Controllers</Filter>
     </ClInclude>
+    <ClInclude Include="collisionController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="slider.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="menuHandler.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="splashMainMenu.h">
+      <Filter>Header Files\UI\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="menus.h">
+      <Filter>Header Files\UI\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="windowController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="consoleController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="windowRenderer.h">
+      <Filter>Header Files\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="worldController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="UIWindow.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="tile.h">
+      <Filter>Header Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="block.h">
+      <Filter>Header Files\world\block</Filter>
+    </ClInclude>
+    <ClInclude Include="tileController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="tester.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blockController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="keybindController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="AIPackage.h">
+      <Filter>Header Files\Entities\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="keyBindAction.h">
+      <Filter>Header Files\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="AIController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="loginController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="loginNetController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

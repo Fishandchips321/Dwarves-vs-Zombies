@@ -11,10 +11,12 @@ entity::entity()
 }
 
 void entity::update()
-{}
+{
+}
 
 void entity::eventUpdate()
-{}
+{
+}
 
 void entity::draw()
 {
@@ -28,7 +30,8 @@ void entity::draw()
 }
 
 void entity::onCollide(entity* collider)
-{}
+{
+}
 
 bool entity::damage(int amount, entity* damager)
 {
