@@ -1,5 +1,6 @@
 #include "render.h"
 #include <SDL2_gfxPrimitives.h>
+#include "imageService.h"
 
 
 int render::xOffset, render::yOffset;
@@ -46,6 +47,8 @@ bool render::init()
 		std::cout << "[ERROR]: couln't set blendmode" << std::endl;
 		return false;
 	}
+	screenSurface = SDL_GetWindowSurface(window);
+	SDL_SetWindowIcon(window, imageService::loadSurface("assets/textures/icon.png"));
 
 	std::cout << "[INFO]: The renderer was successfully initialised" << std::endl;
 	return true;
@@ -56,8 +59,6 @@ bool render::drawScreen()
 {
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0xFF, 0xff);
 
-	//SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_ADD);
-
 	SDL_Rect screen;
 	screen.x = screen.y = 0; screen.h = screenHeight; screen.w = screenWidth;
 	drawSquare(screen, 0, 0, 0, lightAlpha);
@@ -66,8 +67,6 @@ bool render::drawScreen()
 	{
 		filledCircleRGBA(renderer, lights[x].x, lights[x].y, lights[x].radius, 255, 255, 255, 50);
 	}
-	
-	//SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
 	SDL_RenderPresent(renderer);
 	SDL_RenderClear(renderer);

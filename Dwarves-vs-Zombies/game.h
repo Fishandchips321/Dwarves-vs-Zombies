@@ -7,10 +7,11 @@
 #include "UIController.h"
 #include "render.h"
 #include "initializer.h"
-#include "tester.h"
 #include "worldController.h"
 #include "keybindController.h"
 #include "AIController.h"
+#include "actionController.h"
+#include "tester.h"
 
 
 class game
@@ -42,9 +43,10 @@ private:
 	void controlNetUpdate();
 	void draw();
 
-	tester test;
 	worldController world;
 
 	FPSmanager* FPSman;
+
+	tester test;
 };
 

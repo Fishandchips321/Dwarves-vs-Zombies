@@ -14,6 +14,9 @@ void action::keyUp()
 {
 }
 
+void action::keyIsDown()
+{
+}
 
 action::~action()
 {

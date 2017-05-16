@@ -11,6 +11,8 @@
 #include "eventController.h"
 #include "UIController.h"
 #include "menus.h"
+#include "actionController.h"
+#include "allActions.h"
 
 
 
@@ -21,10 +23,9 @@ class initializer
 public:
 	initializer();
 	bool initAll();
-	bool initRender();
 	bool initSDL();
-	bool initEventCont();
 	bool initUI();
+	bool initActions();
 	~initializer();
 private:
 };

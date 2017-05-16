@@ -1,82 +1,67 @@
 #include "splashMainMenu.h"
+#include "UIController.h" //do not use UIController in any class functions (i.e. any function with "splashMainMenu" in front)
 
 void showQuickplay()
 {
-	SDL_Event* e;
-	SDL_memset(&e, 0, sizeof(e));
-	e->type = eventController::UIEvent;
-	e->user.code = eventController::showQuickplayMenu;
-	SDL_PushEvent(e);
+	UIController::showMenu(UIController::quickPlayMenu);
 }
 
 void showServers()
 {
-	SDL_Event* e;
-	SDL_memset(&e, 0, sizeof(e));
-	e->type = eventController::UIEvent;
-	e->user.code = eventController::showServerMenu;
-	SDL_PushEvent(e);
+	UIController::showMenu(UIController::serversMenu);
 }
 
 void showOptions()
 {
-	SDL_Event* e;
-	SDL_memset(&e, 0, sizeof(e));
-	e->type = eventController::UIEvent;
-	e->user.code = eventController::showOptionsMenu;
-	SDL_PushEvent(e);
+	UIController::showMenu(UIController::optionsMenu);
 }
 
 void quitGame()
 {
-	SDL_Event *e;
-	SDL_memset(&e, 0, sizeof(e));
+	SDL_Event *e = new SDL_Event;
+	//SDL_memset(&e, 0, sizeof(e));
 	e->type = eventController::quitGame;
 	SDL_PushEvent(e);
 }
 
 splashMainMenu::splashMainMenu()
-	:quickPlay((render::screenWidth / 2) - (buttonWidth / 2), 50, buttonWidth, buttonHeight, "Quick Play"),
-	servers((render::screenWidth / 2) - (buttonWidth / 2), quickPlay.buttonRect.y + buttonSpacing + buttonHeight, buttonWidth, buttonHeight, "Servers"),
-	options((render::screenWidth / 2) - (buttonWidth / 2), servers.buttonRect.y + buttonSpacing + buttonHeight, buttonWidth, buttonHeight, "Options"),
-	quit((render::screenWidth / 2) - (buttonWidth / 2), options.buttonRect.y + buttonSpacing + buttonHeight, buttonWidth, buttonHeight, "Quit")
+	:quickPlay(0, 0, 300, 50, "Quick Play"),
+	servers(0, 100, 300, 50, "Servers"),
+	options(0, 200, 300, 50, "Options"),
+	quit(0, 300, 300, 50, "Quit")
 {
-	quickPlayF = showQuickplay;
-	serversF = showServers;
-	optionsF = showOptions;
-	quitF = quitGame;
+	rect.x = rect.y = 0;
+	rect.w = render::screenWidth;
+	rect.h = render::screenHeight;
+
+	background = imageService::loadTexture("assets/textures/tester.png");
 }
 
 void splashMainMenu::init(int ID)
 {
-	quickPlay.init(0, ID, quickPlayF);
-	servers.init(1, ID, serversF);
-	options.init(2, ID, optionsF);
-	quit.init(3, ID, quitF);
+	quickPlay.init(0, ID, showQuickplay);
+	servers.init(1, ID, showServers);
+	options.init(2, ID, showOptions);
+	quit.init(3, ID, quitGame);
 
 	menuHandler::init(ID);
 }
 
 void splashMainMenu::eventUpdate()
 {
-	if (visible)
-	{
-		quickPlay.eventUpdate();
-		servers.eventUpdate();
-		options.eventUpdate();
-		quickPlay.eventUpdate();
-	}
+	quickPlay.eventUpdate();
+	servers.eventUpdate();
+	options.eventUpdate();
+	quickPlay.eventUpdate();
 }
 
 void splashMainMenu::draw()
 {
-	if (visible)
-	{
-		quickPlay.draw();
-		servers.draw();
-		options.draw();
-		quickPlay.draw();
-	}
+	//render::drawTexture(background, &rect);
+	quickPlay.draw();
+	servers.draw();
+	options.draw();
+	quickPlay.draw();
 }
 
 splashMainMenu::~splashMainMenu()

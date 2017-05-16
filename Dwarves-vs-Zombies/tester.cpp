@@ -8,16 +8,38 @@ tester::tester()
 
 void tester::init()
 {
-	testText = imageService::loadTexture("assets/textures/tester.png");
+	SDL_Texture* load = imageService::loadTexture("assets/textures/UI/button.png");
+}
 
-	rect.x = rect.y = 0;
-	rect.w = render::screenWidth;
-	rect.h = render::screenHeight;
+void tester::eventUpdate()
+{
+	if (eventController::currentEvent.type == SDL_KEYDOWN)
+	{
+		if (eventController::currentEvent.key.keysym.sym == SDLK_DOWN)
+		{
+			clipRect.y++;
+		}
+
+		if (eventController::currentEvent.key.keysym.sym == SDLK_UP)
+		{
+			clipRect.y--;
+		}
+
+		if (eventController::currentEvent.key.keysym.sym == SDLK_LEFT)
+		{
+			clipRect.x--;
+		}
+
+		if (eventController::currentEvent.key.keysym.sym == SDLK_RIGHT)
+		{
+			clipRect.x++;
+		}
+	}
 }
 
 void tester::draw()
 {
-	render::drawTexture(testText, &rect);
+	render::drawTexture(testTexture, &rect);
 }
 
 tester::~tester()

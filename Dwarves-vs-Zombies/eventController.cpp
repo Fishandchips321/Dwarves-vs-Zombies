@@ -9,7 +9,7 @@ eventController::eventController()
 
 bool eventController::init()
 {
-	Uint32 myEventType = SDL_RegisterEvents(5);
+	Uint32 myEventType = SDL_RegisterEvents(eventNO);
 	if (myEventType != ((Uint32)-1))
 		return true;
 	else

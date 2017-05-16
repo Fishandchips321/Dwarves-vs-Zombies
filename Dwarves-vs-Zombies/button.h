@@ -25,9 +25,11 @@ public:
 	state state = state::up;
 
 	SDL_Rect buttonRect;
+	SDL_Rect clipRect;
 private:
+
+	SDL_Texture* TButton;
 	SDL_Rect textRect;
-	SDL_Texture *textures[5];
 	SDL_Texture *text;
 	int ID, menuID;
 	void(*onClick)();

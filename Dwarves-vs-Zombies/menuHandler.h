@@ -15,7 +15,6 @@ public:
 	virtual void loseFocus();
 	~menuHandler();
 
-	bool visible;
 	int ID;
 };
 

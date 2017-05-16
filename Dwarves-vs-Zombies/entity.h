@@ -18,11 +18,13 @@ public:
 	SDL_Rect entityRect;
 	SDL_Texture* entityTexture;
 	int xVel, yVel;
-	int speed;
 	bool flying;
 	~entity();
 
+	int runVel = 0, sprintVel = 0, walkVel = 0, movVel = runVel;
+
 protected:
 	SDL_Rect drawRect;
+	
 };
 

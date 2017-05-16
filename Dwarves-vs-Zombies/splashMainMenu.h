@@ -1,6 +1,8 @@
 #pragma once
 #include "menuHandler.h"
 #include "eventController.h"
+#include "render.h"
+#include "imageService.h"
 class splashMainMenu : public menuHandler
 {
 public:
@@ -19,10 +21,7 @@ private:
 	const int buttonWidth = 100;
 	const int buttonHeight = 20;
 	const int buttonSpacing = 10;
-
-	void(*quickPlayF)();
-	void(*serversF)();
-	void(*optionsF)();
-	void(*quitF)();
+	SDL_Texture *background;
+	SDL_Rect rect;
 };
 

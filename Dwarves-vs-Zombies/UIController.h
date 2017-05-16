@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "menuHandler.h"
 #include <vector>
+#include <stack>
 
 #define maxMenus 5
 
@@ -12,7 +13,7 @@ public:
 	static void update();
 	static void eventUpdate();
 	static void draw();
-	static void registerMenu(menuHandler menu);
+	static void registerMenu(menuHandler *menu);
 	static int getFocus();
 	static bool showMenu(int menu);
 	~UIController();
@@ -31,10 +32,8 @@ public:
 
 private:
 
-	static std::vector<menuHandler> menus;
-
-	
-
+	static std::vector<menuHandler* > menus;
+	static std::stack<menuHandler* > drawOrder;
 	static int focus;
 };
 

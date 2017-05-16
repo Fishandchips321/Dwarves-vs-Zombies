@@ -1,6 +1,6 @@
 #include "UIController.h"
 
-std::vector<menuHandler> UIController::menus;
+std::vector<menuHandler* > UIController::menus;
 int UIController::focus; //which menu has focus. 0 for the game screen
 
 UIController::UIController()
@@ -9,12 +9,12 @@ UIController::UIController()
 
 void UIController::update()
 {
-	menus[focus].update();
+	menus[focus]->update();
 }
 
 void UIController::eventUpdate()
 {
-	menus[focus].eventUpdate();
+	menus[focus]->eventUpdate();
 
 	if (eventController::currentEvent.type == eventController::UIEvent)
 	{
@@ -31,12 +31,13 @@ void UIController::eventUpdate()
 
 void UIController::draw()
 {
-	menus[focus].draw();
+	menus[focus]->draw();
 }
 
-void UIController::registerMenu(menuHandler menu)
+void UIController::registerMenu(menuHandler *menu)
 {
 	menus.push_back(menu);
+	menu->init(menus.size() - 1);
 }
 
 int UIController::getFocus()
@@ -46,9 +47,10 @@ int UIController::getFocus()
 
 bool UIController::showMenu(int menu)
 {
-	if(menu > maxMenus)
+	menu--;
+	if(menu >= menus.size())
 		return false;
-	menus[menu].loseFocus();
+	menus[menu]->loseFocus();
 	focus = menu;
 	return true;
 }

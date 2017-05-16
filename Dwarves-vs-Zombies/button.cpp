@@ -4,7 +4,25 @@
 
 button::button(int x, int y, int w, int h, std::string text)
 {
+	buttonRect.x = x;
+	buttonRect.y = y;
+	buttonRect.w = w;
+	buttonRect.h = h;
 
+	clipRect.x = 0;
+	clipRect.y = 0;
+	clipRect.w = 120;
+	clipRect.h = 28;
+
+	SDL_Colour colour;
+	colour.r = 0xff;
+	colour.g = 0xff;
+	colour.b = 0xff;
+	colour.a = 0xff;
+
+	button::text = imageService::loadText(text, colour, imageService::UIfont);
+
+	TButton = imageService::loadTexture("assets/textures/UI/button.png");
 }
 
 void button::init(int ID, int menuID, void(*func)())
@@ -24,7 +42,7 @@ void button::eventUpdate()
 			int x, y;
 			SDL_GetMouseState(&x, &y);
 
-			SDL_Rect mouseRect = { x, y, 0, 0 };
+			SDL_Rect mouseRect = { x, y, 1, 1};
 
 			if (SDL_HasIntersection(&buttonRect, &mouseRect))//if the mouse is over the button
 			{
@@ -52,7 +70,7 @@ void button::eventUpdate()
 			int x, y;
 			SDL_GetMouseState(&x, &y);
 
-			SDL_Rect mouseRect = { x, y, 0, 0 };
+			SDL_Rect mouseRect = { x, y, 1, 1};
 
 			if (SDL_HasIntersection(&buttonRect, &mouseRect))//if the mouse is over the button
 			{
@@ -68,6 +86,22 @@ void button::eventUpdate()
 					state = state::up;
 			}
 		}
+
+		switch (state)
+		{
+		case up:
+			clipRect.y = 0;
+			break;
+		case hover:
+			clipRect.y = 28;
+			break;
+		case down:
+			clipRect.y = 56;
+			break;
+		case clicked:
+			clipRect.y = 56;
+			break;
+		}
 	}
 }
 
@@ -78,9 +112,17 @@ void button::update()
 
 void button::draw()
 {
-
+	render::drawTexture(TButton, &buttonRect, &clipRect);
+	render::drawTexture(text, &textRect);
 }
 
 button::~button()
 {
+	for (int x = 0; x < 5; x++)
+	{
+		SDL_DestroyTexture(TButton);
+	}
+
+	SDL_DestroyTexture(text);
+	onClick = nullptr;
 }

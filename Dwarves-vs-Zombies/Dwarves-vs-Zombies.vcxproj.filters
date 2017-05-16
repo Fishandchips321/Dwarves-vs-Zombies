@@ -192,6 +192,27 @@
     <ClCompile Include="escMenu.cpp">
       <Filter>Source Files\actions</Filter>
     </ClCompile>
+    <ClCompile Include="moveForward.cpp">
+      <Filter>Source Files\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="playerAI.cpp">
+      <Filter>Source Files\Entities\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="moveBackward.cpp">
+      <Filter>Source Files\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="moveLeft.cpp">
+      <Filter>Source Files\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="moveRight.cpp">
+      <Filter>Source Files\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="sprint.cpp">
+      <Filter>Source Files\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="walk.cpp">
+      <Filter>Source Files\actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entityController.h">
@@ -300,6 +321,30 @@
       <Filter>Header Files\actions</Filter>
     </ClInclude>
     <ClInclude Include="escMenu.h">
+      <Filter>Header Files\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="playerAI.h">
+      <Filter>Header Files\Entities\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="moveForward.h">
+      <Filter>Header Files\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="moveBackward.h">
+      <Filter>Header Files\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="moveLeft.h">
+      <Filter>Header Files\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="moveRight.h">
+      <Filter>Header Files\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="sprint.h">
+      <Filter>Header Files\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="walk.h">
+      <Filter>Header Files\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="allActions.h">
       <Filter>Header Files\actions</Filter>
     </ClInclude>
   </ItemGroup>

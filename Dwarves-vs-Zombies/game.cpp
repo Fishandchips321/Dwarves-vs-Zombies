@@ -18,6 +18,7 @@ bool game::init()
 	SDL_setFramerate(FPSman, 60);
 
 	test.init();
+
 	return true;
 }
 
@@ -88,8 +89,9 @@ void game::eventUpdate()
 	switch (myGameState)
 	{
 	case gameStates::play:
-		entityController::eventUpdate();
+		actionController::eventUpdate();
 		AIController::eventUpdate();
+		//entityController::eventUpdate();
 		break;
 	case gameStates::lobby:
 		break;
@@ -100,6 +102,7 @@ void game::eventUpdate()
 	case gameStates::over:
 		break;
 	}
+	test.eventUpdate();
 	UIController::eventUpdate();
 	keybindController::eventUpdate();
 }
@@ -171,8 +174,8 @@ void game::draw()
 	switch (myGameState)
 	{
 	case gameStates::play:
-		entityController::draw();
 		world.draw();
+		entityController::draw();
 		break;
 	case gameStates::lobby:
 		break;
@@ -183,7 +186,6 @@ void game::draw()
 	case gameStates::over:
 		break;
 	}
-
 	test.draw();
 	UIController::draw();
 	render::drawScreen(); //no touchey

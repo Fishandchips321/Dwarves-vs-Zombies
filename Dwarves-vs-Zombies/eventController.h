@@ -1,6 +1,9 @@
 #pragma once
 #include <SDL.h>
 #include <iostream>
+
+#define eventNO 10
+
 class eventController
 {
 public:
@@ -22,13 +25,27 @@ public:
 		quickExit,
 		loginError,
 		authError,
-		spawnPlayer
+		spawnPlayer,
+		playerEvent
 	};
 
 	enum UIEvents
 	{
 		showMenu,
 		lobbyPlayerUpdate
+	};
+
+	enum playerEvents
+	{
+		moveForward,
+		moveBack,
+		moveLeft,
+		moveRight,
+		attack,
+		use,
+		walk,
+		sprint,
+		run
 	};
 
 	struct playerSpawn

@@ -10,8 +10,8 @@ class actionController
 {
 public:
 	actionController();
-	static bool registerAction(action *a, SDL_Keycode key, int action);
-	static bool rebindAction(int action, SDL_Keycode key);
+	static bool registerAction(action *a, SDL_Keycode key, int action); //only called by the init class
+	static bool rebindAction(int action, SDL_Keycode key); //called to rebind a key
 	static void eventUpdate();
 	~actionController();
 
