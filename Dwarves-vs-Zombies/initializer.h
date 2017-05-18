@@ -4,7 +4,6 @@
 #include <SDL_image.h>
 #include <string>
 #include <SDL_ttf.h>
-#include <SDL_net.h>
 #include <SDL_mixer.h>
 #include "counter.h"
 #include "render.h"
